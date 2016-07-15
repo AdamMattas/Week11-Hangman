@@ -18,7 +18,24 @@ inquirer.prompt([
 
   if (answers.start == "Yes"){
 
-    //Grab hangman word
+    //Choose a category
+    inquirer.prompt([
+
+      {
+        type: "list",
+        name: "category",
+        message: "Select a category.",
+        choices: ["Science", "Movie", "People"]
+      }
+
+    ]).then(function(answers){
+
+      var goNow = new Games(answers.category);
+      //console.log(goNow.category);
+      goNow.gameOn();
+      //console.log(goNow.word);
+
+    })
 
   }
   // If the user doesn't guess the password...
