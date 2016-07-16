@@ -16,19 +16,22 @@ var Display = function(word){
     Mains.gamePlay(this);
   }
   this.setGuess = function(x){
-    console.log("Working!");
+    //console.log("Working!");
+    //Switched var guessed to number instead of true/false. It was causing problems???
+    var guessed = 0;
     var letter = x.toLowerCase();
     for(i = 0; i < this.guess.length; i++){
       if(letter == this.guess[i]){
-        var guessed = true;
+        guessed = 1;
+        console.log("You already guessed that letter. Try again :)");
+        Mains.gamePlay(this);
       }
     }
-    if(!guessed){
-      console.log("Still Working!");
+    if(guessed == 0){
+      //console.log("Still Working!");
       this.guess.push(letter);
       console.log(this.word);
       var check = new Words(this.word, this);
-      // console.log(check);
       check.checkLetter(letter);
     }
   }

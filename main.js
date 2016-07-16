@@ -66,7 +66,7 @@ var gamePlay = function(that){
         name: "guess",
         message: "Guess a letter!"
       }
-
+    //Send letter to checker
     ]).then(function(answers){
       //console.log(that.word);
       that.setGuess(answers.guess);
