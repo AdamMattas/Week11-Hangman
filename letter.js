@@ -3,6 +3,7 @@ var Words = require('./word.js');
 
 var Display = function(word){
   this.word = word;
+  this.wordShow = '';
   this.guess = [];
   this.setDisplay = function(){
     this.placeholders = '';
