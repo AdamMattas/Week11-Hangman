@@ -5,12 +5,41 @@ var Display = function(word){
   this.word = word;
   this.guess = [];
   this.setDisplay = function(){
+    this.placeholders = '';
     this.wordLength = this.word.length;
     // create row of underscores the same length as letters to guess
     for(var i = 0; i < this.wordLength; i++){
-      this.placeholders += '_ ';
+      this.placeholders += '_';
     }
     this.wordShow = this.placeholders;
+    console.log(this.wordShow);
+    console.log(this.word);
+    Mains.gamePlay(this);
+  }
+  this.resetDisplay = function(letter){
+    // this.placeholders = '';
+    // this.wordLength = this.word.length;
+    // // create row of underscores the same length as letters to guess
+    // for(var i = 0; i < this.wordLength; i++){
+    //   this.placeholders += '_';
+    // }
+    var placeholders = this.wordShow;
+    // split the placeholders into an array
+    placeholders = placeholders.split('');
+    // loop through the array
+    for(var i = 0; i < this.wordLength; i++){
+      // if the selected letter matches one in the word to guess,
+      // replace the underscore and increase the number of correct guesses
+      if(this.word.charAt(i) == letter){
+        placeholders[i] = letter;
+
+        // convert the array to a string and display it again
+        this.wordShow = placeholders.join('');
+        //plays correct key sound
+        
+      }
+    }
+    // this.wordShow = this.placeholders;
     console.log(this.wordShow);
     console.log(this.word);
     Mains.gamePlay(this);

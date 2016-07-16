@@ -23,7 +23,8 @@ var Checker = function(wordToGuess, that){
           console.log("You Win!!!");
           console.log("The word was " + this.wordToGuess)
         }else{
-          Mains.gamePlay(this.that);
+          //Mains.gamePlay(this.that);
+          this.that.resetDisplay(this.guessLetter);
         }
       }
     }
@@ -38,7 +39,8 @@ var Checker = function(wordToGuess, that){
         // console.log("Correct Guesses: " + Mains.correctGuesses);
         // console.log("Bad Guesses: " + Mains.badGuesses);
         console.log("Guesses Remaining: " + Mains.guessesRemaining);
-        Mains.gamePlay(this.that);
+        // Mains.gamePlay(this.that);
+        this.that.resetDisplay(this.guessLetter);
       }else{
         console.log("You lose!")
         console.log("The word was " + this.wordToGuess)
