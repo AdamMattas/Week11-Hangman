@@ -5,7 +5,6 @@ var Game = function(category){
   this.listScience = ['future', 'temporal', 'wormhole'];
   this.listMovie = ['goonies', 'avengers', 'rudy'];
   this.listPeople = ['madonna', 'obama', 'trump'];
-  this.play = 0;
   this.gameOn = function(){
     if(this.category == 'Science'){
       console.log("Science it is!");

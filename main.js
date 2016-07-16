@@ -3,7 +3,10 @@ var Words = require('./word.js');
 var Letters = require('./letter.js');
 var Games = require('./game.js');
 var inquirer = require('inquirer');
-var goNow;
+var play = 1;
+var correctGuesses = 0;
+var badGuesses = 0;
+var guessesRemaining = 10;
 
 //Prompt user to start game
 inquirer.prompt([
@@ -31,7 +34,7 @@ inquirer.prompt([
 
     ]).then(function(answers){
 
-      goNow = new Games(answers.category);
+      var goNow = new Games(answers.category);
       //console.log(goNow.category);
       goNow.gameOn();
       //console.log(goNow.word);
@@ -52,8 +55,9 @@ inquirer.prompt([
 
 })
 
-var gamePlay = function(x){
-  if (x == 0){
+var gamePlay = function(that){
+  if (play == 1){
+
     //Guess a letter
     inquirer.prompt([
 
@@ -64,15 +68,15 @@ var gamePlay = function(x){
       }
 
     ]).then(function(answers){
-      //var guessNow = new Games(answers.guess);
-      //console.log(goNow.category);
-      Words.guessOn(answers.guess);
-      //console.log(goNow.word);
+      //console.log(that.word);
+      that.setGuess(answers.guess);
+      
     })
 
   }
-
 }
 
 exports.gamePlay = gamePlay;
-  
+exports.correctGuesses = correctGuesses;
+exports.badGuesses = badGuesses;
+exports.guessesRemaining = guessesRemaining;

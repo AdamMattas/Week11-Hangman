@@ -3,7 +3,7 @@ var Words = require('./word.js');
 
 var Display = function(word){
   this.word = word;
-  this.play = 0;
+  this.guess = [];
   this.setDisplay = function(){
     this.wordLength = this.word.length;
     // create row of underscores the same length as letters to guess
@@ -13,7 +13,24 @@ var Display = function(word){
     this.wordShow = this.placeholders;
     console.log(this.wordShow);
     console.log(this.word);
-    Mains.gamePlay(this.play);
+    Mains.gamePlay(this);
+  }
+  this.setGuess = function(x){
+    console.log("Working!");
+    var letter = x.toLowerCase();
+    for(i = 0; i < this.guess.length; i++){
+      if(letter == this.guess[i]){
+        var guessed = true;
+      }
+    }
+    if(!guessed){
+      console.log("Still Working!");
+      this.guess.push(letter);
+      console.log(this.word);
+      var check = new Words(this.word, this);
+      // console.log(check);
+      check.checkLetter(letter);
+    }
   }
 }
 
