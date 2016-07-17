@@ -6,6 +6,7 @@ var inquirer = require('inquirer'); //Requires the inquirer npm for prompts & in
 var correctGuesses = 0; //Keeps track of correct guesses
 var badGuesses = 0; //Keeps track of incorrect guesses
 var guessesRemaining = 10; //Allows user to have 10 incorrect guesses before losing
+var options = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
 inquirer.prompt([ //Prompt the user to start the game
 
@@ -59,9 +60,23 @@ var gamePlay = function(that){ //(that) parameter is the name of the object from
         message: "Guess a letter!" //Message displayed to the user
       }
     //Send letter to checker
-    ]).then(function(answers){ //Runs after the user makes a selection
-      //Calls the setGuess function in (that) object and passes the letter guessed
-      that.setGuess(answers.guess);
+    ]).then(function(answers){ //Runs after the user inputs a choice
+
+      var valid; //Initialize valid variable
+      var letter = answers.guess.toLowerCase(); //Convert guess to lowercase
+      for(i = 0; i < options.length; i++){ //Loop through options array
+        if(letter == options[i]){ //If the input matches an option in the array
+          valid = 1; //Set valid variable to 1     
+        }
+      }
+      if(valid == 1){ //If input is valid
+        //Call the setGuess function in (that) object and pass the letter guessed
+        that.setGuess(letter);  
+      }
+      else{ //If input is invalid
+          console.log("Only letters will be accepted. Please try again :)");
+          gamePlay(that); //Run gamePlay function to keep game going
+        }
       
     })
 

@@ -30,9 +30,8 @@ var Display = function(word){
     console.log(this.wordShow.split('').join(' ')); //Display underscores replaced with guessed letters
     Mains.gamePlay(this); //Calls gamePlay function in main.js to keep game going
   }
-  this.setGuess = function(x){ //Checks if letter has already been guessed
+  this.setGuess = function(letter){ //Checks if letter has already been guessed
     var guessed = 0; //Initialize guessed variable
-    var letter = x.toLowerCase(); //Make sure letter is lowercase
     for(i = 0; i < this.guess.length; i++){ //Loop through this.guess array
       if(letter == this.guess[i]){ //If a match is found the letter has already been guessed
         guessed = 1;
