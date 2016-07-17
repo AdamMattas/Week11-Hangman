@@ -21,7 +21,6 @@ inquirer.prompt([
 ]).then(function(answers){
 
   if (answers.start == "Yes"){
-
     //Choose a category
     inquirer.prompt([
 
@@ -29,15 +28,13 @@ inquirer.prompt([
         type: "list",
         name: "category",
         message: "Select a category.",
-        choices: ["Science", "Movie", "People"]
+        choices: ["States", "Movies", "People"]
       }
 
     ]).then(function(answers){
 
       var goNow = new Games(answers.category);
-      //console.log(goNow.category);
       goNow.gameOn();
-      //console.log(goNow.word);
 
     })
 
@@ -68,7 +65,7 @@ var gamePlay = function(that){
       }
     //Send letter to checker
     ]).then(function(answers){
-      //console.log(that.word);
+
       that.setGuess(answers.guess);
       
     })
